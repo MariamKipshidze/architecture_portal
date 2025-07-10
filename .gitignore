@@ -228,3 +228,5 @@ settings_local.py
 
 # Secrets
 secrets.json
+
+architecture_portal/architecture_portal/settings/local.py
