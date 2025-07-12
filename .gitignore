@@ -209,7 +209,6 @@ __marimo__/
 # Django media and static files (if collected locally)
 media/
 staticfiles/
-static/
 
 # Django migration files
 **/migrations/*.py
