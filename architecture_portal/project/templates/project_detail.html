@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ project.title }}</title>
+</head>
+<body>
+    <h1>{{ project.title }}</h1>
+
+    <p><strong>Location:</strong> {{ project.location }}</p>
+    <p><strong>Client:</strong> {{ project.client }}</p>
+    <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+    <p><strong>End Date:</strong> {{ project.end_date }}</p>
+    <p>{{ project.description }}</p>
+
+    <h2>Gallery</h2>
+    <div>
+        {% for image in project.images.all %}
+            <div style="margin-bottom:10px;">
+                <img src="{{ image.image.url }}" width="300" alt="{{ image.caption }}">
+                {% if image.caption %}
+                    <p>{{ image.caption }}</p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No images available.</p>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'project_list' %}">← Back to Projects</a>
+</body>
+</html>

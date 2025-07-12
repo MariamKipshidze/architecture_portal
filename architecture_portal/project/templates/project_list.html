@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+</head>
+<body>
+    <h1>Our Projects</h1>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a>
+                <p>{{ project.description|truncatewords:20 }}</p>
+                {% if project.images.all %}
+                    <img src="{{ project.images.first.image.url }}" width="200">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
