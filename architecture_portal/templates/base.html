@@ -83,25 +83,27 @@
 
 <nav class="navbar navbar-expand-lg" style="background-color: var(--color-navbar);">
   <div class="container-fluid d-flex justify-content-center align-items-center">
-    <a class="navbar-brand mx-4" href="/">
-      <img src="{% static 'logo.png' %}" alt="Logo" style="height: 40px;">
-    </a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="flex-grow: 1;">
-      <ul class="navbar-nav d-flex flex-row justify-content-center w-100">
-        <li class="nav-item mx-3"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="/projects/">Projects</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="/about/">About</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="/contact/">Contact</a></li>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav d-flex flex-row align-items-center gap-4">
+        <li class="nav-item">
+          <a class="navbar-brand" href="/">
+            <img src="{% static 'logo.png' %}" alt="Logo" style="height: 40px;">
+          </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/projects/">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
 
 <main class="main-content container">
     {% block content %}
