@@ -1,25 +1,31 @@
+from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from user.models import CustomUser
+from django.utils.translation import gettext_lazy as _
+from .models import CustomUser
 
 
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ['email', 'first_name', 'last_name', 'phone_number', 'is_staff', 'is_active']
-    list_filter = ['is_staff', 'is_active']
-    search_fields = ['email', 'first_name', 'last_name']
-    ordering = ['email']
 
+    # Fields to display in admin list view
+    list_display = ('email', 'phone_number', 'is_staff', 'is_active')
+    list_filter = ('is_staff', 'is_active')
+
+    # Fields in the detail/edit page
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'phone_number')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+        (None, {'fields': ('email', 'phone_number', 'password')}),
+        (_('Permissions'), {'fields': ('is_staff', 'is_active', 'groups', 'user_permissions')}),
+        (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
 
+    # Fields in the create user form
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': (
-            'email', 'password1', 'password2', 'first_name', 'last_name', 'phone_number', 'is_active', 'is_staff'),
-        }),
+            'fields': ('email', 'phone_number', 'password1', 'password2', 'is_staff', 'is_active')}
+        ),
     )
+
+    search_fields = ('email', 'phone_number')
+    ordering = ('email',)
