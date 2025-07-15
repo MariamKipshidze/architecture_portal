@@ -1,24 +1,128 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
 
 {% block title %}Projects | Architecture Portal{% endblock %}
 
 {% block content %}
     <div class="container">
-        <h1 class="mb-4">Our Projects</h1>
-        <ul class="list-unstyled">
+        <h1 class="page-title">Our Projects</h1>
+        <div class="project-list">
             {% for project in projects %}
-                <li class="mb-4 border-bottom pb-3">
-                    <h5>
-                        <a class="text-light" href="{% url 'project_detail' project.pk %}">
-                            {{ project.title }}
-                        </a>
-                    </h5>
-                    <p>{{ project.description|truncatewords:20 }}</p>
+                <div class="project-card">
                     {% if project.images.all %}
-                        <img src="{{ project.images.first.image.url }}" width="200" class="img-thumbnail">
+                        {% thumbnail project.images.first.image "300x300" crop="center" as img %}
+                            <img src="{{ img.url }}" alt="{{ project.title }}" class="project-image">
+                        {% endthumbnail %}
+                    {% else %}
+                        <img src="{% static 'no_image.jpeg' %}" alt="No Image Available" class="project-image">
                     {% endif %}
-                </li>
+
+                    <div class="project-info">
+                        <h3 class="project-title">
+                            <a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a>
+                        </h3>
+                        <p class="project-description">{{ project.description|truncatewords:20 }}</p>
+                        <a href="{% url 'project_detail' project.pk %}" class="details-link">View Project ➡</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-projects">No projects available.</p>
             {% endfor %}
-        </ul>
+        </div>
     </div>
+
+{% block extra_css %}
+<style>
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+        color: #1d3d5e;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding-bottom: 40px;
+    }
+
+    .project-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .project-info {
+        padding: 20px;
+        color: #1d3d5e;
+    }
+
+    .project-title {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .project-title a {
+        color: #1d3d5e;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .project-title a:hover {
+        color: #5DA9E9;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .details-link {
+        display: inline-block;
+        text-decoration: none;
+        background: #5DA9E9;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .details-link:hover {
+        background: #1d3d5e;
+    }
+
+    .no-projects {
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+        grid-column: 1 / -1;
+    }
+</style>
+{% endblock %}
 {% endblock %}
