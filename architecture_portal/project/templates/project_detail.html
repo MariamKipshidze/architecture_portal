@@ -1,31 +1,222 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ project.title }}</title>
-</head>
-<body>
-    <h1>{{ project.title }}</h1>
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
 
-    <p><strong>Location:</strong> {{ project.location }}</p>
-    <p><strong>Client:</strong> {{ project.client }}</p>
-    <p><strong>Start Date:</strong> {{ project.start_date }}</p>
-    <p><strong>End Date:</strong> {{ project.end_date }}</p>
-    <p>{{ project.description }}</p>
+{% block title %}{{ project.title }} | Architecture Portal{% endblock %}
 
-    <h2>Gallery</h2>
-    <div>
-        {% for image in project.images.all %}
-            <div style="margin-bottom:10px;">
-                <img src="{{ image.image.url }}" width="300" alt="{{ image.caption }}">
-                {% if image.caption %}
-                    <p>{{ image.caption }}</p>
+{% block content %}
+    <div class="project-detail-container">
+        <div class="project-layout">
+            <!-- Left Column - Text Content -->
+            <div class="project-text">
+                <h1 class="project-title">{{ project.title }}</h1>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Location:</span>
+                        <span class="meta-value">{{ project.location }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Client:</span>
+                        <span class="meta-value">{{ project.client }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duration:</span>
+                        <span class="meta-value">{{ project.start_date|date:"M Y" }} - {{ project.end_date|date:"M Y" }}</span>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <p>{{ project.description }}</p>
+                </div>
+
+                <div class="back-link-container">
+                    <a href="{% url 'project_list' %}" class="back-link">← Back to All Projects</a>
+                </div>
+            </div>
+
+            <!-- Right Column - Gallery -->
+            <div class="project-gallery">
+                <h2 class="gallery-title">Project Gallery</h2>
+                {% if project.images.all %}
+                    <div class="gallery-grid">
+                        {% for image in project.images.all %}
+                            <div class="gallery-item">
+                                <img src="{{ image.image.url }}" alt="{{ image.caption|default:project.title }}" class="gallery-image">
+                                {% if image.caption %}
+                                    <div class="image-caption">{{ image.caption }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="no-images">
+                        <img src="{% static 'no_image.jpeg' %}" alt="No images available">
+                        <p>No images available for this project</p>
+                    </div>
                 {% endif %}
             </div>
-        {% empty %}
-            <p>No images available.</p>
-        {% endfor %}
+        </div>
     </div>
 
-    <a href="{% url 'project_list' %}">← Back to Projects</a>
-</body>
-</html>
+{% block extra_css %}
+<style>
+    .project-detail-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .project-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .project-title {
+        font-size: 2.5rem;
+        color: #1d3d5e;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .project-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .meta-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .meta-label {
+        font-size: 0.9rem;
+        color: #777;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .meta-value {
+        font-size: 1.1rem;
+        color: #1d3d5e;
+        font-weight: 500;
+    }
+
+    .project-description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #444;
+        margin-bottom: 40px;
+    }
+
+    .gallery-title {
+        font-size: 1.8rem;
+        color: #1d3d5e;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gallery-item {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .image-caption {
+        padding: 15px;
+        font-size: 0.95rem;
+        color: #555;
+        background: white;
+    }
+
+    .no-images {
+        text-align: center;
+        padding: 40px;
+        background: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    .no-images img {
+        max-width: 100%;
+        opacity: 0.7;
+        margin-bottom: 20px;
+    }
+
+    .no-images p {
+        color: #777;
+        font-size: 1.1rem;
+    }
+
+    .back-link-container {
+        margin-top: 30px;
+    }
+
+    .back-link {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #5DA9E9;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .back-link:hover {
+        background: #1d3d5e;
+    }
+
+    @media (max-width: 1024px) {
+        .project-layout {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .project-text {
+            order: 2;
+        }
+
+        .project-gallery {
+            order: 1;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        .project-title {
+            font-size: 2rem;
+        }
+
+        .gallery-image {
+            height: 250px;
+        }
+    }
+</style>
+{% endblock %}
+{% endblock %}
