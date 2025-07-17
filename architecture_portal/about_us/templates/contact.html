@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | Architecture Portal{% endblock %}
+
+{% block content %}
+<div class="contact-page">
+    <div class="contact-banner">
+        <img src="{% static 'banner.jpg' %}" alt="Contact Us Banner" class="banner-image">
+    </div>
+
+    <div class="contact-content">
+        <h1 class="contact-title">Get In Touch</h1>
+        <p class="contact-intro">We'd love to hear about your next project. Reach out to start the conversation.</p>
+    </div>
+</div>
+
+<style>
+    .contact-page {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .contact-banner {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .banner-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    .contact-content {
+        padding: 40px 20px;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+        color: #1d3d5e;
+        margin-bottom: 20px;
+    }
+
+    .contact-intro {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .contact-title {
+            font-size: 2rem;
+        }
+
+        .contact-intro {
+            font-size: 1rem;
+        }
+    }
+</style>
+{% endblock %}
