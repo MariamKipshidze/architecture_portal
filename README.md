@@ -31,12 +31,17 @@ A Django-based web application for architectural companies featuring a project p
    cp .env.example .env
    ```
 
-6. **Run migrations**
+6. **Generate and set Django secret key**
+   ```bash
+   python -c "from django.core.management.utils import get_random_secret_key; print(f'SECRET_KEY={get_random_secret_key()}')" >> .env
+   ```
+
+7. **Run migrations**
    ```bash
    python manage.py migrate
    ```
 
-7. **Create superuser (optional - for admin access)**
+8. **Create superuser (optional - for admin access)**
    ```bash
    python manage.py createsuperuser
    ```
