@@ -1,6 +1,10 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
+<head>
+    <title>Price Calculator</title>
+    <link rel="stylesheet" href="{% static 'application/css/styles.css' %}">
+</head>
 <div class="result-container">
     <h2>Price Calculation Result</h2>
 
