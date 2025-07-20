@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="calculator-container">
+    <h2>Architectural Project Cost Calculator</h2>
+    <form method="post" id="price-calculator-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.square_meters.label_tag }}
+            {{ form.square_meters }}
+            {{ form.square_meters.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.floors.label_tag }}
+            {{ form.floors }}
+            {{ form.floors.errors }}
+        </div>
+
+        <div class="form-group">
+            <label>Design Complexity:</label>
+            <div class="radio-options">
+                {% for choice in form.design_complexity %}
+                    <div class="radio-option">
+                        {{ choice.tag }}
+                        <label for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            {{ form.design_complexity.errors }}
+        </div>
+
+        <div class="form-group">
+            <label>Additional Services:</label>
+            <div class="checkbox-options">
+                {% for checkbox in form.additional_services %}
+                    <div class="checkbox-option">
+                        {{ checkbox.tag }}
+                        <label for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            {{ form.additional_services.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Calculate Price</button>
+    </form>
+
+    <div id="result-container" style="display: none;">
+        <!-- Results will be displayed here -->
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('price-calculator-form');
+    const resultContainer = document.getElementById('result-container');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch('', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                resultContainer.innerHTML = `
+                    <div class="result-section">
+                        <h3>Estimated Project Cost</h3>
+                        <p><strong>Total Area:</strong> ${data.square_meters} sqm</p>
+                        <p><strong>Floors:</strong> ${data.floors}</p>
+                        <p><strong>Design Complexity:</strong> ${data.design_complexity}</p>
+                        ${data.additional_services.length > 0 ? `
+                        <p><strong>Additional Services:</strong></p>
+                        <ul>
+                            ${data.additional_services.map(service => `<li>${service}</li>`).join('')}
+                        </ul>
+                        ` : ''}
+                        <div class="total-price">
+                            <strong>Total Estimated Price:</strong> $${data.total_price}
+                        </div>
+                    </div>
+                `;
+                resultContainer.style.display = 'block';
+                form.scrollIntoView({ behavior: 'smooth' });
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+</script>
+{% endblock %}
