@@ -25,13 +25,18 @@ A Django-based web application for architectural companies featuring a project p
    ```bash
    cd architecture_portal
    ```
+   
+5. **Create your `.env` file**
+   ```bash
+   cp .env.example .env
+   ```
 
-5. **Run migrations**
+6. **Run migrations**
    ```bash
    python manage.py migrate
    ```
 
-6. **Create superuser (optional - for admin access)**
+7. **Create superuser (optional - for admin access)**
    ```bash
    python manage.py createsuperuser
    ```
