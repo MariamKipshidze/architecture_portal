@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="result-container">
+    <h2>Price Calculation Result</h2>
+
+    <div class="project-summary">
+        <h3>Project Details:</h3>
+        <p><strong>Total Area:</strong> {{ calculation_data.square_meters }} sqm</p>
+        <p><strong>Floors:</strong> {{ calculation_data.floors }}</p>
+        <p><strong>Design Complexity:</strong> {{ form.fields.design_complexity.choices|get_item:calculation_data.design_complexity }}</p>
+
+        {% if calculation_data.additional_services %}
+        <p><strong>Additional Services:</strong></p>
+        <ul>
+            {% for service in calculation_data.additional_services %}
+                <li>{{ form.fields.additional_services.choices|get_item:service }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div class="price-result">
+        <h3>Estimated Price:</h3>
+        <p class="total-price">${{ total_price }}</p>
+    </div>
+
+    <a href="{% url 'calculate_price' %}" class="btn btn-secondary">New Calculation</a>
+</div>
+{% endblock %}
