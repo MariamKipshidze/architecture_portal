@@ -23,7 +23,8 @@ from architecture_portal import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project.urls')),
-    path('about_us/', include('about_us.urls'))
+    path('about_us/', include('about_us.urls')),
+    path('application/', include('application.urls'))
 ]
 
 if settings.DEBUG:
