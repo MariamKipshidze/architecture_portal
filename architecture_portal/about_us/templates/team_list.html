@@ -1,97 +1,100 @@
 {% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}Team | Architecture Portal{% endblock %}
 
 {% block content %}
-<div class="about-section">
-  <h1>Our Team</h1>
-  <p>Meet the talented architects behind our projects</p>
-</div>
+    <div class="container">
+        <h1 class="page-title">Our Team</h1>
+        <p class="team-intro">Meet the talented architects behind our projects</p>
 
-<div class="row">
-  {% for member in team_members %}
-  <div class="column">
-    <div class="card">
-      <img src="{{ member.photo.url }}" alt="{{ member.name }}" style="width:300px; height:300px; object-fit: cover;">
-      <div class="container">
-        <h2>{{ member.name }}</h2>
-        <p class="title">{{ member.position }}</p>
-        <p>{{ member.bio|truncatewords:20 }}</p>
-      </div>
+        <div class="team-grid">
+          {% for member in team_members %}
+            <div class="team-member-card">
+              <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="team-image">
+              <div class="team-info">
+                <h2>{{ member.name }}</h2>
+                <p class="title">{{ member.position }}</p>
+                <p>{{ member.bio|truncatewords:20 }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
     </div>
-  </div>
-  {% endfor %}
-</div>
 
 {% block extra_css %}
 <style>
-    /* Reset box-sizing to include padding in width calculations */
-    * {
-      box-sizing: border-box;
-    }
-
-    /* Team section header */
-    .about-section {
-      padding: 50px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    /* Row container with proper clearing */
-    .row {
-      width: 100%;
-      max-width: 1200px; /* Adjust based on your layout */
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    /* Three equal columns */
-    .column {
-      float: left;
-      width: 33.333%; /* More precise than 33.3% */
-      padding: 0 15px; /* Adjusted padding */
-      margin-bottom: 30px;
-    }
-
-    /* Card styling */
-    .card {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      background: white;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    /* Responsive behavior */
-    @media (max-width: 900px) {
-      .column {
-        width: 50%;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .column {
-        width: 100%;
-      }
-    }
-
-    /* Clearfix for the row */
-    .row::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    /* Image container */
-    .card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-
-    /* Content container */
     .container {
-      padding: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
     }
 
-    /* Other existing styles... */
+    .page-title {
+        font-size: 2.2rem;
+        color: #1d3d5e;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .team-intro {
+        text-align: center;
+        color: #555;
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        padding-bottom: 40px;
+    }
+
+    .team-member-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+    .team-member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .team-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .team-info {
+        padding: 20px;
+    }
+
+    .team-info h2 {
+        margin: 10px 0 5px 0;
+        font-size: 1.4rem;
+        color: #1d3d5e;
+    }
+
+    .team-info .title {
+        font-size: 1rem;
+        color: #5DA9E9;
+        margin-bottom: 10px;
+    }
+
+    .team-info p {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+    }
 </style>
 {% endblock %}
 {% endblock %}
