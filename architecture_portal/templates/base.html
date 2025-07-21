@@ -9,20 +9,37 @@
     <!-- Add Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=My+Soul&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=My+Soul&display=swap" rel="stylesheet">
 
     <style>
         /* General Body Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: #f5f5f5;
+            background-image: url('{% static "architecture_bg.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
 
-        /* Header Styling - Matching first base.html */
+        /* Overlay to darken the background slightly */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+
+        /* Header Styling */
         .header {
-            background-color: #1d3d5e;
+            background-color: rgba(29, 61, 94, 0.9);
             padding: 0 20px;
             height: 80px;
             display: flex;
@@ -34,18 +51,19 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(3px);
         }
 
         /* Title Styling */
         .portal-title {
-            font-family: 'Lora', cursive;
+            font-family: 'My Soul', cursive;
             font-size: 2.2rem;
             color: white;
             text-decoration: none;
             font-weight: 400;
         }
 
-        /* Navigation Links Styling - Matching first base.html exactly */
+        /* Navigation Links Styling */
         .navbar {
             display: flex;
             align-items: center;
@@ -58,15 +76,16 @@
             font-size: 1.1em;
             padding: 8px 12px;
             border-radius: 6px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             font-weight: bold;
         }
 
         .nav-link:hover {
             background-color: #5DA9E9;
+            transform: translateY(-2px);
         }
 
-        /* Main Content Styling - Matching first base.html */
+        /* Main Content Styling */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -74,36 +93,71 @@
             justify-content: center;
             width: 100%;
             min-height: calc(100vh - 80px);
-            padding: 20px 0;
+            padding: 40px 0;
         }
 
-        /* List items styling to match first template */
+        /* Content container with reduced blur and larger size */
+        .content-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            width: 90%;
+            max-width: 1400px;
+            margin: 20px auto;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* List items styling */
         .list-items {
-            width: 80%;
-            max-width: 1000px;
+            width: 100%;
         }
 
         .list-item {
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s ease;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .list-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         /* Footer Styling */
         footer {
-            background-color: #1d3d5e;
+            background-color: rgba(29, 61, 94, 0.9);
             color: white;
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
             width: 100%;
+            backdrop-filter: blur(3px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .content-container {
+                width: 95%;
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -121,9 +175,11 @@
     </header>
 
     <main class="main-content">
-        <div class="list-items">
-            {% block content %}
-            {% endblock %}
+        <div class="content-container">
+            <div class="list-items">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
     </main>
 
