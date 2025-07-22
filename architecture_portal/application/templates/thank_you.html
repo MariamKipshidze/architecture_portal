@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'application/css/application.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="content-container text-center">
