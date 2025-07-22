@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="mb-4">Project Application</h2>
+    <form method="post" class="application-form">
+        {% csrf_token %}
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    {{ form.client_name.label_tag }}
+                    {{ form.client_name }}
+                    {{ form.client_name.errors }}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    {{ form.client_email.label_tag }}
+                    {{ form.client_email }}
+                    {{ form.client_email.errors }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group mb-3">
+                    {{ form.client_phone.label_tag }}
+                    {{ form.client_phone }}
+                    {{ form.client_phone.errors }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group mb-3">
+                    {{ form.project_title.label_tag }}
+                    {{ form.project_title }}
+                    {{ form.project_title.errors }}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    {{ form.project_type.label_tag }}
+                    {{ form.project_type }}
+                    {{ form.project_type.errors }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group mb-4">
+                    {{ form.project_description.label_tag }}
+                    {{ form.project_description }}
+                    {{ form.project_description.errors }}
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+    </form>
+</div>
+{% endblock %}
