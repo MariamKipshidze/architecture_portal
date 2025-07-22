@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block extra_head %}
-<link rel="stylesheet" href="{% static 'application/css/application.css' %}">
-{% endblock %}
-
 {% block content %}
+<head>
+    <title>Create Application</title>
+    <link rel="stylesheet" href="{% static 'application/css/application.css' %}">
+</head>
 <div class="content-container">
     <h2 class="mb-4">Project Application</h2>
     <form method="post" class="application-form">
