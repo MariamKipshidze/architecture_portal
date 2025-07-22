@@ -1,84 +1,80 @@
-/* Application Form Container - Matching Calculator Style */
+/* Calculator-style container */
 .application-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
+    max-width: 500px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
 }
 
-/* Form Groups - Consistent with Calculator */
-.application-form .form-group {
+/* Title styling to match calculator */
+.form-title {
+    color: #2a6496;
     margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
 }
 
-.application-form .form-group label {
+/* Form group styling */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     font-weight: 600;
     color: #333;
+    font-size: 0.95rem;
 }
 
-/* Input Fields - Matching Calculator */
-.application-form input[type="text"],
-.application-form input[type="email"],
-.application-form input[type="tel"],
-.application-form select,
-.application-form textarea {
+/* Input fields - calculator style */
+.form-control {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
+    font-size: 0.95rem;
 }
 
-.application-form textarea {
-    min-height: 120px;
+/* Select dropdown - calculator style */
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.95rem;
+}
+
+/* Textarea - calculator style */
+.form-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 100px;
     resize: vertical;
+    font-size: 0.95rem;
 }
 
-/* Focus States */
-.application-form input:focus,
-.application-form select:focus,
-.application-form textarea:focus {
-    border-color: #4a6fa5;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
-}
-
-/* Select Dropdown - Matching Style */
-.application-form select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 1rem;
-}
-
-/* Submit Button - Matching Calculator */
-.application-form .btn-submit {
-    padding: 0.6rem 1.2rem;
+/* Submit button - calculator blue */
+.btn-submit {
+    width: 100%;
+    padding: 0.6rem;
     background-color: #4a6fa5;
     color: white;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
-    width: 100%;
-}
-
-.application-form .btn-submit:hover {
-    background-color: #3a5a8f;
-}
-
-/* Error Messages */
-.application-form .errorlist {
-    color: #dc3545;
+    font-weight: 600;
+    cursor: pointer;
     margin-top: 0.5rem;
-    padding-left: 0;
-    list-style: none;
-    font-size: 0.875rem;
+}
+
+.btn-submit:hover {
+    background-color: #3a5a8f;
 }

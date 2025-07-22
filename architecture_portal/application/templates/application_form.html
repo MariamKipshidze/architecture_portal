@@ -5,62 +5,47 @@
     <title>Create Application</title>
     <link rel="stylesheet" href="{% static 'application/css/application.css' %}">
 </head>
-<div class="content-container">
-    <h2 class="mb-4">Project Application</h2>
+<div class="application-container">
+    <h2 class="form-title">Project Application</h2>
     <form method="post" class="application-form">
         {% csrf_token %}
 
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="form-group mb-3">
-                    {{ form.client_name.label_tag }}
-                    {{ form.client_name }}
-                    {{ form.client_name.errors }}
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group mb-3">
-                    {{ form.client_email.label_tag }}
-                    {{ form.client_email }}
-                    {{ form.client_email.errors }}
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="form-group mb-3">
-                    {{ form.client_phone.label_tag }}
-                    {{ form.client_phone }}
-                    {{ form.client_phone.errors }}
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="form-group mb-3">
-                    {{ form.project_title.label_tag }}
-                    {{ form.project_title }}
-                    {{ form.project_title.errors }}
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group mb-3">
-                    {{ form.project_type.label_tag }}
-                    {{ form.project_type }}
-                    {{ form.project_type.errors }}
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="form-group mb-4">
-                    {{ form.project_description.label_tag }}
-                    {{ form.project_description }}
-                    {{ form.project_description.errors }}
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="id_client_name">Client name:</label>
+            <input type="text" name="client_name" class="form-control" required id="id_client_name">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit Application</button>
+        <div class="form-group">
+            <label for="id_client_email">Client email:</label>
+            <input type="email" name="client_email" class="form-control" required id="id_client_email">
+        </div>
+
+        <div class="form-group">
+            <label for="id_client_phone">Client phone:</label>
+            <input type="tel" name="client_phone" class="form-control" required id="id_client_phone">
+        </div>
+
+        <div class="form-group">
+            <label for="id_project_title">Project title:</label>
+            <input type="text" name="project_title" class="form-control" required id="id_project_title">
+        </div>
+
+        <div class="form-group">
+            <label>Project type:</label>
+            <select name="project_type" class="form-select">
+                <option value="RESIDENTIAL">Residential</option>
+                <option value="COMMERCIAL">Commercial</option>
+                <option value="INSTITUTIONAL">Institutional</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="id_project_description">Project description:</label>
+            <textarea name="project_description" class="form-textarea" required id="id_project_description"></textarea>
+            <small>Describe your project in detail (minimum 20 characters)</small>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Application</button>
     </form>
 </div>
 {% endblock %}
