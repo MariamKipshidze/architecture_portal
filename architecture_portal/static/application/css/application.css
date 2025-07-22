@@ -1,0 +1,78 @@
+/* Application Form Styling */
+.application-form {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.application-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.application-form label {
+    font-weight: 600;
+    color: #1d3d5e;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.application-form .form-control,
+.application-form .form-select {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(29, 61, 94, 0.2);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.application-form .form-control:focus,
+.application-form .form-select:focus {
+    border-color: #5DA9E9;
+    box-shadow: 0 0 0 0.25rem rgba(93, 169, 233, 0.25);
+    outline: none;
+}
+
+.application-form .btn-submit {
+    background-color: #1d3d5e;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.application-form .btn-submit:hover {
+    background-color: #2a4f75;
+    transform: translateY(-2px);
+}
+
+/* Error Styling */
+.application-form .errorlist {
+    color: #dc3545;
+    margin-top: 0.5rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Thank You Page */
+.thank-you-container {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.thank-you-container h2 {
+    color: #1d3d5e;
+    margin-bottom: 1.5rem;
+}
+
+.thank-you-container p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #495057;
+}
