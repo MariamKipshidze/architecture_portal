@@ -1,5 +1,7 @@
 from django import forms
 
+from application.models import Application
+
 
 class PriceCalculatorForm(forms.Form):
     square_meters = forms.FloatField(label='Total Area (sqm)', min_value=10)
@@ -24,3 +26,23 @@ class PriceCalculatorForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
+
+
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = [
+            'client_name',
+            'client_email',
+            'client_phone',
+            'project_title',
+            'project_type',
+            'project_description'
+        ]
+        widgets = {
+            'project_description': forms.Textarea(attrs={
+                'rows': 5,
+                'placeholder': 'Describe your project in detail (minimum 20 characters)'
+            }),
+            'project_type': forms.Select(attrs={'class': 'form-select'})
+        }
