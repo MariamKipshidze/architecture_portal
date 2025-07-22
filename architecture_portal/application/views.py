@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from application.forms import PriceCalculatorForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from django.contrib import messages
+
+from application.forms import PriceCalculatorForm, ApplicationForm
+from application.models import Application
 
 
 def calculate_price(request):
@@ -58,3 +63,15 @@ def calculate_price(request):
         form = PriceCalculatorForm()
 
     return render(request, 'calculator.html', {'form': form})
+
+
+class ApplicationCreateView(CreateView):
+    model = Application
+    form_class = ApplicationForm
+    template_name = 'application_form.html'
+    success_url = reverse_lazy('application:thank_you')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Your application has been submitted successfully!')
+        return response
