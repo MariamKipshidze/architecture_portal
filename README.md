@@ -129,3 +129,24 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    pyenv install 3.9.13  # Install a specific version
    pyenv global 3.9.13   # Set it as default
    ```
+
+6. **Set Up a Python Virtual Environment**  
+   1. **Install the `virtualenv` package**:  
+      ```bash
+      sudo apt update && sudo apt install python3-virtualenv -y
+      ```
+   
+   2. **Create a virtual environment** (e.g., for your project):  
+      ```bash
+      virtualenv venv --python=python3  # Uses your default Python 3
+      ```
+      *Replace `python3` with a specific version (e.g., `python3.9`) if needed.*
+   
+   3. **Activate the environment**:  
+      ```bash
+      source venv/bin/activate  # Linux/macOS
+      ```
+      *(For Windows: `.\venv\Scripts\activate`)*  
+   
+   4. **Verify activation**:  
+      Your terminal prompt should now show `(venv)`.  
