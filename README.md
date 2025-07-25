@@ -149,4 +149,20 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
       *(For Windows: `.\venv\Scripts\activate`)*  
    
    4. **Verify activation**:  
-      Your terminal prompt should now show `(venv)`.  
+      Your terminal prompt should now show `(venv)`.
+
+7. **Clone the Project Repository**  
+   1. **Navigate to your target directory (optional)** (where the code should live):  
+      ```bash
+      cd /path/to/your/projects  # Example: ~/projects
+      ```
+   
+   2. **Clone the repository**:  
+      ```bash
+      git clone https://github.com/MariamKipshidze/architecture_portal.git
+      ```
+   
+   3. **Enter the project directory**:  
+      ```bash
+      cd architecture_portal
+      ```
