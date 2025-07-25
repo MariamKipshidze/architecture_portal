@@ -109,4 +109,6 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
        
    - **Outbound Rules:**
      - By default, AWS allows all outbound traffic. This means your instance can initiate connections to the internet (e.g., for updates, downloads, or external API calls).
+       
+3. **Add Security Group to instance**
 
