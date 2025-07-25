@@ -101,11 +101,11 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
      - **Port Range**: 80  
      - **Source**: `0.0.0.0/0` (public web traffic)  
 
-   - **Third Inbound Rule (HTTPS Access)**  
-     - **Type**: HTTPS  
+   - **Third Inbound Rule (HTTP Access)**  
+     - **Type**: HTTP 
      - **Protocol**: TCP  
-     - **Port Range**: 443  
-     - **Source**: `0.0.0.0/0` (secure web traffic)
+     - **Port Range**: 80
+     - **Source**: `::/0` (secure web traffic)
        
    - **Outbound Rules:**
      - By default, AWS allows all outbound traffic. This means your instance can initiate connections to the internet (e.g., for updates, downloads, or external API calls).
