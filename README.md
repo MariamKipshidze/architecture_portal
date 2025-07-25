@@ -80,10 +80,33 @@ COMPLEXITY_MULTIPLIERS = {
 FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 ```
 
-## Deployment
+## Deployment on Amazon EC2 instance
 
 1. **Create Amazon EC2 instance**
    
-   - Use the Ubuntu operating system.
+   - Use the Ubuntu operating system. 
 
-2. **Create security groups**
+2. **Configure Security Group**  
+   Add the following inbound rules to allow necessary traffic:  
+
+   - **First Inbound Rule (SSH Access)**  
+     - **Type**: SSH  
+     - **Protocol**: TCP  
+     - **Port Range**: 22  
+     - **Source**: `0.0.0.0/0` (or restrict to your IP for security, e.g., `123.45.67.89/32`)  
+
+   - **Second Inbound Rule (HTTP Access)**  
+     - **Type**: HTTP  
+     - **Protocol**: TCP  
+     - **Port Range**: 80  
+     - **Source**: `0.0.0.0/0` (public web traffic)  
+
+   - **Third Inbound Rule (HTTPS Access)**  
+     - **Type**: HTTPS  
+     - **Protocol**: TCP  
+     - **Port Range**: 443  
+     - **Source**: `0.0.0.0/0` (secure web traffic)
+       
+   - **Outbound Rules:**
+     - By default, AWS allows all outbound traffic. This means your instance can initiate connections to the internet (e.g., for updates, downloads, or external API calls).
+
