@@ -84,3 +84,6 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 
 1. **Create Amazon EC2 instance**
    
+   - Use the Ubuntu operating system.
+
+2. **Create security groups**
