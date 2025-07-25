@@ -119,7 +119,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```
 5. **Check python version**
 
-   - If the Python version doesn’t match your project’s requirements, change it (e.g., using pyenv or update-alternatives).
+   If the Python version doesn’t match your project’s requirements, change it (e.g., using pyenv or update-alternatives).
 
    ```bash
    # Check installed Python versions:
