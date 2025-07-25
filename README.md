@@ -79,3 +79,8 @@ COMPLEXITY_MULTIPLIERS = {
 }
 FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 ```
+
+## Deployment
+
+1. **Create Amazon EC2 instance**
+   
