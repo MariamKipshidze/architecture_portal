@@ -117,4 +117,15 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    sudo apt-get update
    sudo apt-get upgrade
    ```
+5. **Check python version**
 
+   - If the Python version doesn’t match your project’s requirements, change it (e.g., using pyenv or update-alternatives).
+
+   ```bash
+   # Check installed Python versions:
+   python3 --version  # or: python --version
+   
+   # Switch versions (example using pyenv):
+   pyenv install 3.9.13  # Install a specific version
+   pyenv global 3.9.13   # Set it as default
+   ```
