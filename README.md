@@ -166,3 +166,8 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
       ```bash
       cd architecture_portal
       ```
+
+8. **Install Nginx**
+   ```bash
+   sudo apt-get install -y nginx
+   ```
