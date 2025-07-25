@@ -112,8 +112,9 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
        
 3. **Add Security Group to instance**
 
-4. **Update ubuntu**
+4. **Update and Upgarde ubuntu**
    ```bash
    sudo apt-get update
+   sudo apt-get upgrade
    ```
 
