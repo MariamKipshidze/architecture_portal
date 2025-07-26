@@ -171,3 +171,9 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```bash
    sudo apt-get install -y nginx
    ```
+
+9. **Install Gunicorn**
+   ```bash
+   pip install gunicorn
+   ```
+   
