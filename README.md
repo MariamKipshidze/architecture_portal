@@ -228,3 +228,5 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 
     Navigate to the directory **/etc/nginx**
     and modify the file nginx.conf - first line replace with -> **user root;**
+
+17. **Create Django config file**
