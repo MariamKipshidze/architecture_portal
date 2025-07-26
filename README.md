@@ -181,3 +181,10 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
     ```bash
    sudo apt-get install supervisor
    ```
+
+11. **Create Gunicorn conf file**
+    ```bash
+   cd /etc/supervisor/conf.d/
+   sudo touch gunicorn.conf
+   sudo nano gunicorn.conf
+   ```
