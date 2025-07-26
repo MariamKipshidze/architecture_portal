@@ -207,3 +207,13 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```bash
    sudo mkdir /var/log/gunicorn
    ```
+
+13. **Tell supervisor to read from the gunicorn configuration file**
+   ```bash
+   sudo supervisorctl reread
+   ```
+
+14. **Tell supervisor to start gunicorn process in the background**
+   ```bash
+   sudo supervisorctl update
+   ```
