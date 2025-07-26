@@ -166,23 +166,27 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
       ```bash
       cd architecture_portal
       ```
-
-8. **Install Nginx**
+8. ** Install requirments**
+   ```bash
+   pip install -r /home/ubuntu/architecture_portal/requirements.txt
+   ```
+   
+9. **Install Nginx**
    ```bash
    sudo apt-get install -y nginx
    ```
 
-9. **Install Gunicorn**
+10. **Install Gunicorn**
    ```bash
    pip install gunicorn
    ```
 
-10. **Install Supervisor**
+11. **Install Supervisor**
    ```bash
    sudo apt-get install supervisor
    ```
 
-11. **Create Gunicorn conf file**
+12. **Create Gunicorn conf file**
    ```bash
    cd /etc/supervisor/conf.d/
    sudo touch gunicorn.conf
@@ -192,28 +196,31 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 
    ```bash
    [program:gunicorn]
-   directory=/home/ubuntu/{djano-project-directory}
-   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/{djano-project-directory}/app.sock {djano-project-name}.wsgi:application  
+   directory=/home/ubuntu/architecture_portal/architecture_portal  # Parent of manage.py
+   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/run/gunicorn/app.sock architecture_portal.wsgi:application
    autostart=true
    autorestart=true
    stderr_logfile=/var/log/gunicorn/gunicorn.err.log
    stdout_logfile=/var/log/gunicorn/gunicorn.out.log
+   environment=
+       PATH="/home/ubuntu/venv/bin:%(ENV_PATH)s",
+       VIRTUAL_ENV="/home/ubuntu/venv"
    
    [group:guni]
-   programs:gunicorn
+   programs:gunicorn 
    ```
 
-12. **Create a directory for Gunicorn logs**
+13. **Create a directory for Gunicorn logs**
    ```bash
    sudo mkdir /var/log/gunicorn
    ```
 
-13. **Tell supervisor to read from the gunicorn configuration file**
+14. **Tell supervisor to read from the gunicorn configuration file**
    ```bash
    sudo supervisorctl reread
    ```
 
-14. **Tell supervisor to start gunicorn process in the background**
+15. **Tell supervisor to start gunicorn process in the background**
    ```bash
    sudo supervisorctl update
    ```
