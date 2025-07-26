@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-key-for-ci-tests-only')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['13.60.73.76', 'localhost']
 
 
 # Application definition
