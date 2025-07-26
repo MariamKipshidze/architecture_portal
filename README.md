@@ -230,3 +230,6 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
     and modify the file nginx.conf - first line replace with -> **user root;**
 
 17. **Create Django config file**
+   ```bash
+   
+   ```
