@@ -176,4 +176,8 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```bash
    pip install gunicorn
    ```
-   
+
+10. **Install Supervisor**
+    ```bash
+   sudo apt-get install supervisor
+   ```
