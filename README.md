@@ -193,7 +193,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```bash
    [program:gunicorn]
    directory=/home/ubuntu/{djano-project-directory}
-   command=/home/ubuntu/env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/{djano-project-directory}/app.sock {djano-project-name}.wsgi:application  
+   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/{djano-project-directory}/app.sock {djano-project-name}.wsgi:application  
    autostart=true
    autorestart=true
    stderr_logfile=/var/log/gunicorn/gunicorn.err.log
