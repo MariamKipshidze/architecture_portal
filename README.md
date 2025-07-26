@@ -224,3 +224,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```bash
    sudo supervisorctl update
    ```
+16. **Update nginx.conf**
+
+    Navigate to the directory **/etc/nginx**
+    and modify the file nginx.conf - first line replace with -> **user root;**
