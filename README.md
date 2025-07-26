@@ -202,3 +202,8 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    [group:guni]
    programs:gunicorn
    ```
+
+12. **Create a directory for Gunicorn logs**
+   ```bash
+   sudo mkdir /var/log/gunicorn
+   ```
