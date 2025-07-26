@@ -178,13 +178,27 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```
 
 10. **Install Supervisor**
-    ```bash
+   ```bash
    sudo apt-get install supervisor
    ```
 
 11. **Create Gunicorn conf file**
-    ```bash
+   ```bash
    cd /etc/supervisor/conf.d/
    sudo touch gunicorn.conf
    sudo nano gunicorn.conf
+   ```
+   Add this to gunicorn.conf file
+
+   ```bash
+   [program:gunicorn]
+   directory=/home/ubuntu/elevate
+   command=/home/ubuntu/env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/elevate/app.sock elevate.wsgi:application  
+   autostart=true
+   autorestart=true
+   stderr_logfile=/var/log/gunicorn/gunicorn.err.log
+   stdout_logfile=/var/log/gunicorn/gunicorn.out.log
+   
+   [group:guni]
+   programs:gunicorn
    ```
