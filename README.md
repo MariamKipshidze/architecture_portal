@@ -240,7 +240,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    ```bash
    server {
        listen 80;
-       server_name 13.60.73.76;  # Replace with your actual domain or IP
+       server_name {domain or IP};  # Replace with your actual domain or IP
    
        location / {
            include proxy_params;
