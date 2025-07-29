@@ -196,18 +196,17 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 
    ```bash
    [program:gunicorn]
-   directory=/home/ubuntu/architecture_portal/architecture_portal  # Parent of manage.py
-   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/run/gunicorn/app.sock architecture_portal.wsgi:application
-   autostart=true
-   autorestart=true
+   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/architecture_portal/architecture_portal/app.sock  architecture_portal.wsgi:applicati>
+   directory=/home/ubuntu/architecture_portal/architecture_portal
    stderr_logfile=/var/log/gunicorn/gunicorn.err.log
    stdout_logfile=/var/log/gunicorn/gunicorn.out.log
-   environment=
-       PATH="/home/ubuntu/venv/bin:%(ENV_PATH)s",
-       VIRTUAL_ENV="/home/ubuntu/venv"
+   autostart=true
+   autorestart=true
+   environment=PATH="/home/ubuntu/venv/bin:%(ENV_PATH)s",VIRTUAL_ENV="/home/ubuntu/venv"
+   
    
    [group:guni]
-   programs:gunicorn 
+   programs:gunicorn
    ```
 
 13. **Create a directory for Gunicorn logs**
