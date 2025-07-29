@@ -230,5 +230,34 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 
 17. **Create Django config file**
    ```bash
+   cd sites-available
+   sudo touch django.conf
+   sudo nano django.conf
+   ```
+
+   django.conf content
+
+   ```bash
+   server {
+       listen 80;
+       server_name 13.60.73.76;  # Replace with your actual domain or IP
    
+       location / {
+           include proxy_params;
+           proxy_pass http://unix:/home/ubuntu/architecture_portal/architecture_portal/app.sock;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+           proxy_connect_timeout 300s;
+           proxy_read_timeout 300s;
+       }
+   
+       location /static/ {
+           alias /home/ubuntu/architecture_portal/architecture_portal/staticfiles/;
+       }
+   
+       location /media/ {
+           alias /home/ubuntu/architecture_portal/architecture_portal/media/;
+       }
+   }
    ```
