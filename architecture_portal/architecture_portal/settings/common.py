@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'sorl.thumbnail',
     'django_celery_beat',
+    'drf_yasg',
 
     'about_us',
     'application',
