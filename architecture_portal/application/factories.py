@@ -1,7 +1,7 @@
 import factory
 from application.models import Application
 
-class ProductFactory(factory.django.DjangoModelFactory):
+class ApplicationFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Application
 
