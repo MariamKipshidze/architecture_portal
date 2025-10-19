@@ -262,3 +262,69 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
        }
    }
    ```
+
+
+18. **Create symbolic link to enable the Django site**
+```bash
+sudo ln -s /etc/nginx/sites-available/django.conf /etc/nginx/sites-enabled/
+```
+
+19. **Test Nginx configuration**
+```bash
+sudo nginx -t
+```
+This should show "syntax is ok" and "test is successful"
+
+20. **Configure Django settings for production**
+```bash
+cd /home/ubuntu/architecture_portal/architecture_portal
+nano .env
+```
+Add/update these settings in your `.env` file:
+```
+DEBUG=False
+ALLOWED_HOSTS=your-ec2-ip-address,your-domain.com
+SECRET_KEY=your-generated-secret-key
+```
+
+21. **Collect static files**
+```bash
+cd /home/ubuntu/architecture_portal/architecture_portal
+python manage.py collectstatic --noinput
+```
+
+22. **Run database migrations**
+```bash
+python manage.py migrate
+```
+
+23. **Restart services**
+```bash
+sudo supervisorctl restart gunicorn
+sudo systemctl restart nginx
+```
+
+24. **Check service status**
+```bash
+sudo supervisorctl status gunicorn
+sudo systemctl status nginx
+```
+
+25. **Access your site**
+Open your browser and navigate to:
+```
+http://your-ec2-public-ip
+```
+
+## Troubleshooting Commands
+```bash
+# Check Gunicorn logs
+sudo tail -f /var/log/gunicorn/gunicorn.err.log
+
+# Check Nginx error logs
+sudo tail -f /var/log/nginx/error.log
+
+# Restart if needed
+sudo supervisorctl restart all
+sudo systemctl restart nginx
+```
