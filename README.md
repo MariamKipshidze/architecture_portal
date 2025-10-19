@@ -295,6 +295,7 @@ python manage.py collectstatic --noinput
 
 22. **Run database migrations**
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
