@@ -197,7 +197,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 
    ```bash
    [program:gunicorn]
-   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/architecture_portal/architecture_portal/app.sock  architecture_portal.wsgi:applicati>
+   command=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/architecture_portal/architecture_portal/app.sock  architecture_portal.wsgi:application
    directory=/home/ubuntu/architecture_portal/architecture_portal
    stderr_logfile=/var/log/gunicorn/gunicorn.err.log
    stdout_logfile=/var/log/gunicorn/gunicorn.out.log
