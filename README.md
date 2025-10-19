@@ -120,6 +120,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
 5. **Check python version**
 
    If the Python version doesn’t match your project’s requirements, change it (e.g., using pyenv or update-alternatives).
+   Python version: 3.11.13
 
    ```bash
    # Check installed Python versions:
@@ -130,7 +131,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    pyenv global 3.9.13   # Set it as default
    ```
 
-6. **Set Up a Python Virtual Environment**  
+7. **Set Up a Python Virtual Environment**  
    1. **Install the `virtualenv` package**:  
       ```bash
       sudo apt update && sudo apt install python3-virtualenv -y
@@ -151,7 +152,7 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
    4. **Verify activation**:  
       Your terminal prompt should now show `(venv)`.
 
-7. **Clone the Project Repository**  
+8. **Clone the Project Repository**  
    1. **Navigate to your target directory (optional)** (where the code should live):  
       ```bash
       cd /path/to/your/projects  # Example: ~/projects
@@ -166,17 +167,17 @@ FLOOR_MULTIPLIER = 0.2  # 20% increase per additional floor
       ```bash
       cd architecture_portal
       ```
-8. ** Install requirments**
+9. ** Install requirments**
    ```bash
    pip install -r /home/ubuntu/architecture_portal/requirements.txt
    ```
    
-9. **Install Nginx**
+10. **Install Nginx**
    ```bash
    sudo apt-get install -y nginx
    ```
 
-10. **Install Gunicorn**
+11. **Install Gunicorn**
    ```bash
    pip install gunicorn
    ```
