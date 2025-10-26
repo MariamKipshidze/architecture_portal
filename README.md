@@ -307,7 +307,7 @@ sudo systemctl restart nginx
 
 24. **Check service status**
 ```bash
-sudo supervisorctl status gunicorn
+sudo supervisorctl restart guni:gunicorn
 sudo systemctl status nginx
 ```
 
