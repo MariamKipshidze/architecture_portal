@@ -301,7 +301,7 @@ python manage.py migrate
 
 23. **Restart services**
 ```bash
-sudo supervisorctl restart gunicorn
+sudo supervisorctl restart guni:gunicorn
 sudo systemctl restart nginx
 ```
 
